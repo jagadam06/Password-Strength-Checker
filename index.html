@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="card">
+        <h1>Password Strength Checker</h1>
+        <p class="lede">Every rule below is a regular expression, a pattern a finite automaton can recognise.</p>
+
+        <label for="password">Enter your password</label>
+        <div class="field">
+            <input type="password" id="password" placeholder="Start typing"
+                   autocomplete="off" spellcheck="false" autofocus>
+            <button type="button" id="toggle" class="toggle"
+                    aria-pressed="false" aria-label="Show password">Show</button>
+        </div>
+
+        <div class="tiles" id="tiles" aria-hidden="true"></div>
+
+        <div class="meter" id="meter" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <p id="result" class="result" aria-live="polite">Your result will appear here.</p>
+
+        <h2>Rules and their regex</h2>
+        <ul id="rules" class="rules">
+            <li id="length"><span class="tick"></span><span class="name">At least 8 characters</span><code>.{8,}</code></li>
+            <li id="uppercase"><span class="tick"></span><span class="name">One uppercase letter</span><code>[A-Z]</code></li>
+            <li id="lowercase"><span class="tick"></span><span class="name">One lowercase letter</span><code>[a-z]</code></li>
+            <li id="digit"><span class="tick"></span><span class="name">One number</span><code>[0-9]</code></li>
+            <li id="special"><span class="tick"></span><span class="name">One special character</span><code>[@#$%!&amp;*]</code></li>
+        </ul>
+
+        <h2>Try a test case</h2>
+        <div class="samples" id="samples">
+            <button type="button" data-v="abc">abc</button>
+            <button type="button" data-v="password1">password1</button>
+            <button type="button" data-v="Ab@1">Ab@1</button>
+            <button type="button" data-v="Password1">Password1</button>
+            <button type="button" data-v="Pass@word1">Pass@word1</button>
+        </div>
+    </main>
+
+    <script src="/script.js"></script>
+</body>
+</html>
